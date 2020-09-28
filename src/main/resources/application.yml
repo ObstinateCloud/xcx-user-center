@@ -16,7 +16,8 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+        cluster-name: BJ
   application:
     name: user-center
 server:
-  port: 8071
+  port: 8070
