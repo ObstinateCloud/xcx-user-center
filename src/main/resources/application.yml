@@ -22,4 +22,4 @@ spring:
   application:
     name: user-center
 server:
-  port: 8071
+  port: 8070
