@@ -23,3 +23,5 @@ spring:
     name: user-center
 server:
   port: 8070
+rocketmq:
+  name-server: 127.0.0.1:9876
