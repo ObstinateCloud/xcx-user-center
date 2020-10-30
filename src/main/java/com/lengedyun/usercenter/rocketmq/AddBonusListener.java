@@ -5,6 +5,8 @@ import com.lengedyun.usercenter.dao.user.UserMapper;
 import com.lengedyun.usercenter.domain.dto.messaging.UserAddBonusMsgDto;
 import com.lengedyun.usercenter.domain.entity.BonusEventLog;
 import com.lengedyun.usercenter.domain.entity.User;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,9 @@ import java.util.Date;
  * @date: 2020/10/18 21:53
  */
 
-@Component
-@RocketMQMessageListener(topic = "add-bonus",consumerGroup = "consumer-group")
+//@Component
+//@RocketMQMessageListener(topic = "add-bonus",consumerGroup = "consumer-group")
+@Slf4j
 public class AddBonusListener implements RocketMQListener<UserAddBonusMsgDto> {
 
     @Autowired
@@ -49,6 +52,6 @@ public class AddBonusListener implements RocketMQListener<UserAddBonusMsgDto> {
                         .description("投稿加积分")
                         .build()
         );
-
+        log.info("积分添加完成");
     }
 }
