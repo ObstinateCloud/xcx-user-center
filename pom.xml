@@ -80,6 +80,12 @@
             <version>0.10.7</version>
             <scope>runtime</scope>
         </dependency>
+        <!--引入微信开发工具包-->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-miniapp</artifactId>
+            <version>3.5.0</version>
+        </dependency>
     </dependencies>
 
     <!--整合spring-cloud阿里巴巴-->
