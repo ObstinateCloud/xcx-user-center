@@ -2,6 +2,7 @@ package com.lengedyun.usercenter.controller;
 
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
+import com.lengedyun.usercenter.auth.CheckLogin;
 import com.lengedyun.usercenter.dao.user.UserMapper;
 import com.lengedyun.usercenter.domain.dto.user.JwtTokenRespDTO;
 import com.lengedyun.usercenter.domain.dto.user.LoginRespDTO;
@@ -42,9 +43,20 @@ public class UserController {
     private JwtOperator jwtOperator;
 
     @GetMapping("/{id}")
+    @CheckLogin
     public User findById(@PathVariable Integer id){
         System.out.println("8071我被调用了");
         return userService.findUserById(id);
+    }
+
+    @GetMapping("gen-token")
+    public String getToken(){
+        Map<String, Object> userInfo = new HashMap<>();
+        userInfo.put("id",1);
+        userInfo.put("wxNickname","传奇");
+        userInfo.put("role","user");
+        String token = jwtOperator.generateToken(userInfo);
+        return token;
     }
 
     @PostMapping("/login")
