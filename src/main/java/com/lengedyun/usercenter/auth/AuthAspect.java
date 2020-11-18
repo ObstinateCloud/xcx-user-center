@@ -31,7 +31,7 @@ public class AuthAspect {
     @Autowired
     private JwtOperator jwtOperator;
 
-    @Around("@annotation(com.lengedyun.contentcenter.auth.CheckLogin)")
+    @Around("@annotation(com.lengedyun.usercenter.auth.CheckLogin)")
     public Object checkLogin(ProceedingJoinPoint point) throws Throwable {
         checkToken();
         return point.proceed();//此处的异常应该抛出去，否则会覆盖掉其他内部异常
@@ -72,7 +72,7 @@ public class AuthAspect {
         return servletRequestAttributes.getRequest();
     }
 
-    @Around("@annotation(com.lengedyun.contentcenter.auth.CheckAuthorization)")
+    @Around("@annotation(com.lengedyun.usercenter.auth.CheckAuthorization)")
     public Object checkAuth(ProceedingJoinPoint point) throws Throwable {
         //1.检查用户是否登录
         checkToken();
