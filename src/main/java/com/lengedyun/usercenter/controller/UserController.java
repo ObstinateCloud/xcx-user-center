@@ -4,10 +4,8 @@ import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import com.lengedyun.usercenter.auth.CheckLogin;
 import com.lengedyun.usercenter.dao.user.UserMapper;
-import com.lengedyun.usercenter.domain.dto.user.JwtTokenRespDTO;
-import com.lengedyun.usercenter.domain.dto.user.LoginRespDTO;
-import com.lengedyun.usercenter.domain.dto.user.UserLoginDTO;
-import com.lengedyun.usercenter.domain.dto.user.UserRespDTO;
+import com.lengedyun.usercenter.domain.dto.messaging.UserAddBonusMsgDto;
+import com.lengedyun.usercenter.domain.dto.user.*;
 import com.lengedyun.usercenter.domain.entity.User;
 import com.lengedyun.usercenter.service.user.UserService;
 import com.lengedyun.usercenter.utils.JwtOperator;
@@ -97,5 +95,14 @@ public class UserController {
                                 .bonus(loginUser.getBonus())
                                 .build())
                 .build();
+    }
+
+    /**
+     * 为用户添加积分
+     */
+    @PutMapping("addUserBonus")
+    public Integer addUserBonus(@RequestBody UserAddBonusDto userAddBonusDto){
+
+        return this.userService.addUserBonus(userAddBonusDto);
     }
 }
